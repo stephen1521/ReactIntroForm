@@ -5,20 +5,23 @@ class Form extends Component {
         super(props);
         this.intialState = {
             title:'',
-            actors:[],
+            actors:'',
             plot:'',
-            genre:[],
+            genre:'',
             imdbRating:'',
             director:'',
             year:'',
-            dateAdded: String(getDate())
+            dateAdded: String(new Date())
         }
         this.state = this.intialState;
     }
 
     onFormSubmit = (e) => {
         e.preventDefault();
+        const newDate = String(new Date());
+        this.setState({dateAdded:newDate});
         this.props.addMovie(this.state);
+        this.intialState.dateAdded = newDate;
         this.setState(this.intialState);
     }
 
@@ -36,7 +39,7 @@ class Form extends Component {
             genre,
             imdbRating, 
             director, 
-            year, 
+            year,
             } = this.state;
         return (
             <form onSubmit={this.onFormSubmit}>
@@ -47,7 +50,7 @@ class Form extends Component {
                         value={title}
                         onChange={this.handleChange}/><br/>
                 <label htmlFor="actors">Actors:</label><br/>
-                <input type='Array'
+                <input type='text'
                         id='actors'
                         name='actors'
                         value={actors}
@@ -59,7 +62,7 @@ class Form extends Component {
                         value={plot}
                         onChange={this.handleChange}/><br/>
                 <label htmlFor="genre">Genre:</label><br/>
-                <input type='Array'
+                <input type='text'
                         id='genre'
                         name='genre'
                         value={genre}
@@ -86,10 +89,6 @@ class Form extends Component {
             </form>
         )
     }
-}
-
-function getDate(){
-    return new Date();
 }
 
 export default Form;
