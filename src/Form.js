@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-const date = new Date();
 
 class Form extends Component {
     constructor(props) {
@@ -12,7 +11,7 @@ class Form extends Component {
             imdbRating:'',
             director:'',
             year:'',
-            dateAdded: String(date)
+            dateAdded: String(getDate())
         }
         this.state = this.intialState;
     }
@@ -87,6 +86,10 @@ class Form extends Component {
             </form>
         )
     }
+}
+
+function getDate(){
+    return new Date();
 }
 
 export default Form;
