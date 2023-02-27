@@ -119,6 +119,8 @@ class App extends Component {
     }
 
 	addMovie = (movie) => {
+		const date = String(new Date());
+		movie.dateAdded = date;
 		this.setState({movies: [...this.state.movies, movie]});
 	}
 

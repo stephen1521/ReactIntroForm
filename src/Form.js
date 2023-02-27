@@ -11,17 +11,14 @@ class Form extends Component {
             imdbRating:'',
             director:'',
             year:'',
-            dateAdded: String(new Date())
+            dateAdded:''
         }
         this.state = this.intialState;
     }
 
     onFormSubmit = (e) => {
         e.preventDefault();
-        const newDate = String(new Date());
-        this.setState({dateAdded:newDate});
         this.props.addMovie(this.state);
-        this.intialState.dateAdded = newDate;
         this.setState(this.intialState);
     }
 
