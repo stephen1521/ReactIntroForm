@@ -110,8 +110,11 @@ const movies = [
 class App extends Component {
 	state = {movies}
 
-	deleteOne = (index) => {
-		movies.splice(index,1);
+	deleteOne = (index, title) => {
+		const movieToDelete = movies.findIndex((movie) => {
+			return movie.title === title
+		})
+		movies.splice(movieToDelete, 1);
         this.setState({
             movies: this.state.movies.filter((_, i) => {
                 return i !== index

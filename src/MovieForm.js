@@ -37,7 +37,7 @@ const TableBody = (props) => {
                 <td>{row.year}</td>
                 <td>{row.dateAdded}</td>
                 <td>
-                    <button onClick={()=>props.deleteOne(index)}>Delete</button>
+                    <button onClick={()=>props.deleteOne(index, row.title)}>Delete</button>
                 </td>
             </tr>
         )
