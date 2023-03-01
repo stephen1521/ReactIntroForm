@@ -133,7 +133,7 @@ class App extends Component {
 			})
 		}
 		else if(value.selectedOption === 'title'){
-			const filteredMovies = this.state.movies.filter(movie => movie.title === value.searchTerm);
+			const filteredMovies = this.state.movies.filter(movie => movie.title.toLowerCase().includes(value.searchTerm.toLowerCase()));
 			this.setState({
 				movies: filteredMovies
 			})
@@ -145,7 +145,7 @@ class App extends Component {
 			})
 		}
 		else if(value.selectedOption === 'director'){
-			const filteredMovies = this.state.movies.filter(movie => movie.director === value.searchTerm);
+			const filteredMovies = this.state.movies.filter(movie => movie.director.toLowerCase().includes(value.searchTerm.toLowerCase()));
 			this.setState({
 				movies: filteredMovies
 			})
