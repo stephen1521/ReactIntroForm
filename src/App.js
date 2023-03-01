@@ -111,9 +111,9 @@ class App extends Component {
 	state = {movies}
 
 	deleteOne = (index) => {
-    	const { movies } = this.state;
+		movies.splice(index,1);
         this.setState({
-            movies: movies.filter((_, i) => {
+            movies: this.state.movies.filter((_, i) => {
                 return i !== index
             }),
         })
@@ -122,6 +122,7 @@ class App extends Component {
 	addMovie = (movie) => {
 		const date = String(new Date());
 		movie.dateAdded = date;
+		movies.push(movie);
 		this.setState({movies: [...this.state.movies, movie]});
 	}
 
@@ -133,6 +134,18 @@ class App extends Component {
 		}
 		else if(value.selectedOption === 'title'){
 			const filteredMovies = this.state.movies.filter(movie => movie.title === value.searchTerm);
+			this.setState({
+				movies: filteredMovies
+			})
+		}
+		else if(value.selectedOption === 'actor'){
+			const filteredMovies = this.state.movies.filter(movie => movie.actors.includes(value.searchTerm));
+			this.setState({
+				movies: filteredMovies
+			})
+		}
+		else if(value.selectedOption === 'director'){
+			const filteredMovies = this.state.movies.filter(movie => movie.director === value.searchTerm);
 			this.setState({
 				movies: filteredMovies
 			})
