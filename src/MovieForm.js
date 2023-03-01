@@ -42,7 +42,11 @@ const TableBody = (props) => {
             </tr>
         )
     })
-    return <tbody>{rows}</tbody>
+    if(rows.length === 0){
+        return <tbody><tr><td>Not Found</td></tr></tbody>
+    }else{
+        return <tbody>{rows}</tbody>
+    }
 }
 
 // Movie Form
